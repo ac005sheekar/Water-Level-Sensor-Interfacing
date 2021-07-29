@@ -1,0 +1,30 @@
+int value = 0;  // holds the value
+int data = A5; // sensor data pin used
+  
+void setup() { 
+  
+  pinMode(data, INPUT);
+  Serial.begin(9600); //start the serial console
+} 
+  
+void loop() { 
+   
+  value = analogRead(data); //Read data from analog pin and store it to value variable
+   
+  if (value<=100)
+  { 
+    Serial.println("Water Level: Empty"); 
+  } 
+  else if (value>100 && value<=300)
+  { 
+    Serial.println("Water Level: Low"); 
+  } 
+  else if (value>300 && value<=330)
+  { 
+    Serial.println("Water Level: Medium"); 
+  } 
+  else if (value>330){ 
+    Serial.println("Water Level: High"); 
+  }
+  delay(1000); 
+}
